@@ -1,13 +1,15 @@
 // DEPENDECIES
 const express = require('express');
+const res = require('express/lib/response');
 const app = express();
 require('dotenv').config();
 const mongoose = require('mongoose');
 const Product = require('./models/product.js');
+// const methodOverride = require('method-override');
 
 //DATABASE CONNECTION
 mongoose.connect(process.env.DATABASE_URL,{
-    useNewUrlParser: true,
+    // useNewUrlParser: true,
     useUnifiedTopology: true
 });
 
@@ -20,6 +22,8 @@ db.on('disconnected', () => console.log('monog disconnected'));
 
 // MOUNT MIDDLEWARE & BODY PARSER
 app.use(express.urlencoded({ extended: true}));
+const methodOverride= require('method-override');
+app.use(methodOverride("_method"));
 
 // SEED DATA
 const productSeed = require('./models/productSeed.js');
@@ -42,23 +46,50 @@ app.get('/products', (req,res) => {
     res.render('new.ejs'); //change to render after testing
 })
 
-// D
+// DELETE
+app.delete('/products/:id', (req,res) => {
+    Product.findByIdAndDelete(req.params.id, (err, data) => {
+        res.redirect("/products")
+    })
+})
+// UPDATE
 
-// U
-
+// Update
+app.put("/product/:id", (req, res) => {
+    if (req.body.completed === "on") {
+      req.body.completed = true
+    } else {
+      req.body.completed = false
+    }
+  
+    Book.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+      },
+      (error, updatedProduct) => {
+        res.redirect(`/product/${req.params.id}`)
+      }
+    )
+  })
 // CREATE
 app.post('/products', (req, res) => {
+    
     if (req.body.completed === 'on') {
+        //if checked, req.body.completed is set to 'on'
         req.body.completed = true;
     } else {
+        //if not checked, req.body.completed is undefined
         req.body.completed = false;
     }
 
-    Product.create(req.body, (error, createdBook) => {
-        res.redirect('/products'); //change to redirect after testing
-    });
-}) 
+    Book.create(req.body, (error, createdBook) => {
+		res.redirect('/products');
+    })
 
+    res.send(req.body);
+})
 // E
 
 // SHOWS

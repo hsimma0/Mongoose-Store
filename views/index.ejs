@@ -14,10 +14,13 @@
         <% products.forEach(product=>{ %>
             <li>
                 <a href="/products/<%=product._id; %>"> <%=product.title;%></a>
+                <form action="/products/<%method product.id %>?_method=DELETE" method="POST" style="display:inline; margin-left:16px;">
+                    <input type="submit" value="DELETE" />
+                </form>
+                <a href="/products/<%=product._id %>/edit">Edit</a>
             </li>
        <% }) %>
     </ul>
-
     
 </body>
 </html>
