@@ -7,7 +7,17 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <nav>
+        <a href="/product/new">Add a New Product</a>
+    </nav>
+    <ul>
+        <% products.forEach(product=>{ %>
+            <li>
+                <a href="/products/<%=product._id; %>"> <%=product.title;%></a>
+            </li>
+       <% }) %>
+    </ul>
+
     
 </body>
 </html>
