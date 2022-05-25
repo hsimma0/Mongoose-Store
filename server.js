@@ -26,9 +26,12 @@ const methodOverride= require('method-override');
 app.use(methodOverride("_method"));
 
 // SEED DATA
-const productSeed = require('./models/productSeed.js');
+const productSeed = require('./models/productSeed.js'); //Had .js
 app.get('/products/seed', (req,res) => {
-    res.redirect('/products'); //change to redirect after testing
+    Product.deleteMany({}, (error, allProducts) => {});
+    Product.create(productSeed, (error, data) => {
+        res.redirect('/products'); //change to redirect after testing
+    });
 });
 
 //ROUTES
@@ -52,9 +55,8 @@ app.delete('/products/:id', (req,res) => {
         res.redirect("/products")
     })
 })
-// UPDATE
 
-// Update
+// UPDATE
 app.put("/product/:id", (req, res) => {
     if (req.body.completed === "on") {
       req.body.completed = true
@@ -73,6 +75,7 @@ app.put("/product/:id", (req, res) => {
       }
     )
   })
+
 // CREATE
 app.post('/products', (req, res) => {
     
@@ -90,7 +93,8 @@ app.post('/products', (req, res) => {
 
     res.send(req.body);
 })
-// E
+
+// EDIT
 
 // SHOWS
 app.get('/product/:id', (req, res) => {
@@ -100,7 +104,6 @@ app.get('/product/:id', (req, res) => {
         });
     });
 });
-
 
 // LISTENER
 const PORT = process.env.PORT;
