@@ -18,3 +18,5 @@ module.exports = [{
     qty: 1
   },
 ];
+
+console.log(module);

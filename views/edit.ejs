@@ -10,11 +10,11 @@
   <body>
     <h1>Edit Product</h1>
     <form action="/products/<%=product._id %>?_method=PUT" method="POST"></form>
-        Name: <input type="text" name="name" value="<%=product.name%>" placeholder="id">
-        Description: <input type="text" name="description" value="<%=product.description%>"  placeholder="id">
-        Image: <input type="text" name="" value="<%=product.img%>" placeholder="id">
-        Price: <input type="number" name="" value="<%=product.price%>" placeholder="id">
-        Quantity: <input type="number" name="" value="<%=product.quantity%>" placeholder="id">
+        Name: <input type="text" name="name" value="<%=product.name%>">
+        Description: <input type="text" name="description" value="<%=product.description%>">
+        Image: <input type="text" name="" value="<%=product.img%>">
+        Price: <input type="number" name="" value="<%=product.price%>">
+        Quantity: <input type="number" name="" value="<%=product.quantity%>">
       <br />
       <input type="submit" value="Submit Changes" />
     </form>
