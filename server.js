@@ -1,15 +1,16 @@
 // DEPENDECIES
 const express = require('express');
-const res = require('express/lib/response');
+// const res = require('express/lib/response');
 const app = express();
 require('dotenv').config();
 const mongoose = require('mongoose');
 const Product = require('./models/product.js');
+const methodOverride= require('method-override');
 // const methodOverride = require('method-override');
 
 //DATABASE CONNECTION
 mongoose.connect(process.env.DATABASE_URL,{
-    // useNewUrlParser: true,
+    useNewUrlParser: true,
     useUnifiedTopology: true
 });
 
@@ -22,17 +23,16 @@ db.on('disconnected', () => console.log('monog disconnected'));
 
 // MOUNT MIDDLEWARE & BODY PARSER
 app.use(express.urlencoded({ extended: true}));
-const methodOverride= require('method-override');
 app.use(methodOverride("_method"));
 
 // SEED DATA
-const productSeed = require('./models/productSeed.js'); //Had .js
-app.get('/products/seed', (req,res) => {
-    Product.deleteMany({}, (error, allProducts) => {});
-    Product.create(productSeed, (error, data) => {
-        res.redirect('/products'); //change to redirect after testing
-    });
-});
+// const productSeed = require('./models/productSeed.js'); //Had .js
+// app.get('/products/seed', (req,res) => {
+//     Product.deleteMany({}, (err, allProducts) => {});
+//     Product.create(productSeed, (err, data) => {
+//         res.redirect('/products'); //change to redirect after testing
+//     });
+// });
 
 //ROUTES
 // INDEX
@@ -57,14 +57,14 @@ app.delete('/products/:id', (req,res) => {
 })
 
 // UPDATE
-app.put("/product/:id", (req, res) => {
+app.put("/products:id", (req, res) => {
     if (req.body.completed === "on") {
       req.body.completed = true
     } else {
       req.body.completed = false
     }
   
-    Book.findByIdAndUpdate(
+    Product.findByIdAndUpdate(
       req.params.id,
       req.body,
       {
@@ -87,17 +87,24 @@ app.post('/products', (req, res) => {
         req.body.completed = false;
     }
 
-    Book.create(req.body, (error, createdBook) => {
+    Product.create(req.body, (error, createdProduct) => {
 		res.redirect('/products');
     })
 
-    res.send(req.body);
+    // res.render(req.body);
 })
 
 // EDIT
+app.get('/products/:id/edit',(req, res) => {
+    Product.findById(req.params.id, (error, foundProduct) => {
+        res.render('edit.ejs', {
+            product: foundProduct,
+        })
+    })
+})
 
 // SHOWS
-app.get('/product/:id', (req, res) => {
+app.get('/products/:id', (req, res) => {
     Product.findById(req.params.id, (err, foundProduct) => {
         res.render('show.ejs', { //change to render after testing
             product: foundProduct,

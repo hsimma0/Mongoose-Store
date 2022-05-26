@@ -1,6 +1,4 @@
-module.exports = 
-[
-  {
+module.exports = [{
     name: 'Beans',
     description: 'A small pile of beans. Buy more beans for a big pile of beans.',
     img: 'https://imgur.com/LEHS8h3.png',
@@ -18,5 +16,5 @@ module.exports =
     img: 'https://imgur.com/ptWDPO1.png',
     price: 7000,
     qty: 1
-  }
-]
+  },
+];

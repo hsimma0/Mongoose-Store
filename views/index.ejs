@@ -10,17 +10,14 @@
     <nav>
         <a href="/product/new">Add a New Product</a>
     </nav>
-    <ul>
-        <% products.forEach(product=>{ %>
-            <li>
-                <a href="/products/<%=product._id; %>"> <%=product.title;%></a>
-                <form action="/products/<%method product.id %>?_method=DELETE" method="POST" style="display:inline; margin-left:16px;">
-                    <input type="submit" value="DELETE" />
-                </form>
-                <a href="/products/<%=product._id %>/edit">Edit</a>
-            </li>
-       <% }) %>
-    </ul>
-    
+
+    <% products.forEach(product => { %>
+    <h2><a href="/products/<%product._id; %>">img src= "<%=product.img %>"<%=product.name; %></a></h2>
+    <h3>$<%=product.price; %></h3>
+    <form  action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display:inline; margin-left:16px;">
+        <input type="submit" value="DELETE" />
+    </form>
+    <a href="/products/<%product._id%>/edit">Edit</a>
+   <% }) %>
 </body>
 </html>
