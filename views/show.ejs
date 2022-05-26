@@ -1,22 +1,45 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://fonts.cdnfonts.com/css/gameplay" rel="stylesheet">
     <title>Document</title>
+    
 </head>
-<body>
+<style>
+    .container{
+        background-image: url();
+        
+    }
+    .infoBox{
+        background-image: url(https://c.tenor.com/lZQKyXIYQ5AAAAAC/sharingan-genjutsu-itachi-crow-corvos.gif);
+        background-size: cover;
+        color: white;
+        font-family: 'Gameplay', sans-serif;
+        text-align: center;
+                                                
+    }
+    .imageBox{
+        text-align:center;
+    }
+</style>
+<body class="container">
     <nav>
-        <a href="/products">Back to Product HomePage</a>
+        <a href="/products">BACK TO MANGA MAIN</a>
     </nav>
-    <a href="/products/<%=product._id %>/edit">Edit</a>
-    <input type="button" value="buy" />
-    <h1> Name:<%=product.name %></h1>
-    <img src="<%= product.img %>"> 
-    <h2>Price: $<%= product.price%></h2>
-    <h2>Quantity: <%= product.qty%></h2>
-    <h3>Description: <%= product.description%></h3>
-
+    <div class="infoBox">
+        <div class="imageBox">
+            <h1><%=product.name %></h1>
+            <img src="<%= product.img %>"> 
+        </div>
+        <h4>PRICE: $<%= product.price%></h4>
+        <h4>QUANTITY: <%= product.qty%></h4>
+        <h4>DESCRIPTION: <%= product.description%></h4>
+        <a href="/products/<%=product._id %>/edit"><input type="button" value="EDIT"></a>
+        <input type="button" value="BUY NOW" />
+    </div>
 </body>
 </html>

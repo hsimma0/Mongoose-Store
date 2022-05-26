@@ -5,19 +5,35 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="http://fonts.cdnfonts.com/css/gameplay" rel="stylesheet">
 		<title>Product List</title>
 	</head>
+	<style>
+		.container{
+			text-align: center;
+			font-family: 'Gameplay', sans-serif;
+			text-align: center;    
+			background-image: url(https://pa1.narvii.com/6098/76f9257c0424d8aea4ccbf6aceb14c3c116ad296_hq.gif);
+			background-size: cover;
+			color: white;
+		}
+	</style>
 
 	<body>
-		<h1>New Product Page</h1>
-		<form action="/products" method="POST">
-			Name: <input type="text" name="name" /><br />
-			Description: <input type="text" name="description" /><br />
-			Image: <input type="text" name="img" /><br />
-			Price: <input type="number" name="price" /><br />
-			Quantity: <input type="number" name="qty" /><br />
-			<input type="submit" name="" value="Add Product" />
-		</form>
+		<div class="container">
+			<h1>NEW MANGA</h1>
+		<div class="infoBox">
+			<form action="/products" method="POST">
+				Name: <input type="text" name="name" /><br />
+				Description: <input type="text" name="description" /><br />
+				Image: <input type="text" name="img" /><br />
+				Price: <input type="number" name="price" /><br />
+				Quantity: <input type="number" name="qty" /><br />
+				<input type="submit" name="" value="ADD MANGA" />
+			</form>
+		</div>
+		</div>
+		
 	</body>
 
 </html>

@@ -4,18 +4,36 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="http://fonts.cdnfonts.com/css/gameplay" rel="stylesheet">
     <title>Placeholder</title>
   </head>
+  <style>
+    .container{
+      text-align: center;
+      font-family: 'Gameplay', sans-serif;
+      text-align: center;    
+      background-image: url(https://i.pinimg.com/originals/e1/4b/04/e14b042ac71ac24761a2b77eabf610da.gif);
+      background-size: cover;
+      color: white;
+    }
+    .infoBox{
+      text-align: center;
+  }
 
+  </style>
   <body>
-    <h1>Edit Product</h1>
-    <form action="/products/<%=item._id%>?_method=PUT" method="POST"></form>
-      Name: <input type="text" name="name" value="<%=item.name%>" /><br />
-      Description: <input type="text" name="description" value="<%=item.description%>" /><br />
-      Image: <input type="text" name="image" value="<%=item.img%>" /><br />
-      Price: <input type="text" name="price" value="<%=item.price%>" /><br />
-      Quantity: <input type="text" name="quantity" value="<%=item.qty%>" /><br />
-      <input type="submit" value="Submit Changes" />
+    <div class="container">
+      <h2>EDIT MANGA</h2>
+    <div class="infoBox">
+      <form action="/products/<%=item._id%>?_method=PUT" method="POST">
+Name: <input type="text" name="name" value="<%=item.name%>" /><br />
+Description: <input type="text" name="description" value="<%=item.description%>" /><br />
+Image: <input type="text" name="image" value="<%=item.img%>" /><br />
+Price: <input type="text" name="price" value="<%=item.price%>" /><br />
+Quantity: <input type="text" name="quantity" value="<%=item.qty%>" /><br />
+      <input type="submit" value="COMMIT CHANGES" />
     </form>
+    </div>
+    </div>
   </body>
 </html>

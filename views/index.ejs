@@ -1,24 +1,57 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="http://fonts.cdnfonts.com/css/gameplay" rel="stylesheet">
     <title>Document</title>
 </head>
+<style>
+    .row {
+        display:inline-block;
+        height:auto;
+        flex-wrap: wrap;
+        justify-content: space-evenly ;
+    }
+    .priceTag{
+        text-align: center;
+    }
+    .container{
+        text-align:center;
+        color: black;
+        font-family: 'Gameplay', sans-serif;
+        background-image: url(https://i.pinimg.com/originals/83/98/d4/8398d4de253276c3504e07396adcf236.gif);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
+    }   
+    .addManga{
+        text-align: center;
+    }
+</style>
 <body>
-    <nav>
-        <a href="/products/new">Add a New Product</a>
-    </nav>
-
+    <div class="addManga">
+        <nav>
+            <a href="/products/new">ADD MANGA</a>
+        </nav>
+    </div>
     <% product.forEach(product => { %>
-    <a href="/products/<%=product._id; %>">
-        <img src= "<%=product.img %>" /></a>
-    <h3>$<%=product.price; %></h3>
-    <form  action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display:inline; margin-left:16px;">
-        <input type="submit" value="DELETE" />
-    </form>
-    <a href="/products/<%=product._id%>/edit">Edit</a>
-   <% }) %>
+        <div class="container">
+            <a href="/products/<%=product._id; %>"> </br>
+                <img src= "<%=product.img %>" /></a> 
+                <div class="priceTag">
+                    <a> PRICE: $<%=product.price; %><a> </br>
+                </div>
+               
+            <form  action="/products/<%= product.id %>?_method=DELETE" method="POST" style="display:inline; margin-left:16px;">
+                <input type="submit" value="DELETE" />
+                <input type="button" value="BUY" />
+            </form>
+            <a href="/products/<%=product._id%>/edit"><input type="button" value="EDIT"></a> </br>
+           <% }) %>
+        </div>
+        
 </body>
 </html>
