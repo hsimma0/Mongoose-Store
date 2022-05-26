@@ -3,7 +3,7 @@ const Product = require('../models/product');
 const router = express.Router();
 const productSeed = require('../models/productSeed.js');
 //ROUTES
-router.get('/product', (req, res) => {
+router.get('/seed', (req, res) => {
     Product.deleteMany({}, (error, allProducts) => { });
     Product.create(productSeed, (error, data) => {
         red.redirect('/product');
@@ -46,7 +46,7 @@ router.put("/:id", (req, res) => {
         new: true,
       },
       (error, updatedProduct) => {
-        res.redirect(`/product/${req.params.id}`)
+        res.redirect(`/products/${req.params.id}`)
       }
     )
   })
@@ -71,7 +71,7 @@ router.post('/', (req, res) => {
 router.get('/:id/edit',(req, res) => {
     Product.findById(req.params.id, (error, foundProduct) => {
         res.render('edit.ejs', {
-            product: foundProduct,
+        item: foundProduct,
         })
     })
 })

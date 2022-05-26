@@ -9,13 +9,12 @@
 
   <body>
     <h1>Edit Product</h1>
-    <form action="/products/<%=product._id %>?_method=PUT" method="POST"></form>
-        Name: <input type="text" name="name" value="<%=product.name%>">
-        Description: <input type="text" name="description" value="<%=product.description%>">
-        Image: <input type="text" name="" value="<%=product.img%>">
-        Price: <input type="number" name="" value="<%=product.price%>">
-        Quantity: <input type="number" name="" value="<%=product.quantity%>">
-      <br />
+    <form action="/products/<%=item._id%>?_method=PUT" method="POST"></form>
+      Name: <input type="text" name="name" value="<%=item.name%>" /><br />
+      Description: <input type="text" name="description" value="<%=item.description%>" /><br />
+      Image: <input type="text" name="image" value="<%=item.img%>" /><br />
+      Price: <input type="text" name="price" value="<%=item.price%>" /><br />
+      Quantity: <input type="text" name="quantity" value="<%=item.qty%>" /><br />
       <input type="submit" value="Submit Changes" />
     </form>
   </body>

@@ -24,7 +24,7 @@ db.on('disconnected', () => console.log('monog disconnected'));
 // MOUNT MIDDLEWARE & BODY PARSER
 app.use(express.urlencoded({ extended: true}));
 app.use(methodOverride("_method"));
-app.use('/product', productController);
+app.use('/products', productController);
 
 // LISTENER
 const PORT = process.env.PORT;
